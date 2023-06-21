@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 <head>
   <title>Блог</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,12 +9,14 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 
-<div class="container mt-5">
-  <h1>Блог сайта</h1>
-  <div th:each="el : ${posts}" class="alert alert-info mt-2">
+<div class="container mt-5 mb-5">
+
+  <div th:each="el : ${post}" class="alert alert-info mt-2">
     <h3 th:text="${el.title}" />
-    <p th:text="${el.anons}" />
-    <a th:href="'/blog/' + ${el.id}" class="btn btn-warning">Подробнее</a>
+    <p th:text="${el.full_text}" />
+    <p th:text="${el.views}" />
+    <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
+    <a th:href="'/blog/' + ${el.id} + '/remove'" class="btn btn-warning">Удалить</a>
   </div>
 
 </div>
